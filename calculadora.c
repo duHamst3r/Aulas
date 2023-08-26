@@ -43,5 +43,15 @@ int main() {
         printf("Resultado %d e menor que %d e %d\n", resultado, valor1, valor2);
     }
 
+
+//SOMA: resultado = valor1 = valor2
+//SUBTRACAO: resultado = valor1 - valor2
+//MULTIPLICACAO: resultado = valor1 * valor2
+//DIVISAO: resultado = valor1 / valor2
+//RESTO: resultado = valor1 % valor2
+//INCREMENTO: resultado = valor1==;
+//DECREMENTO: resultado = valor1--;
+
+
     return 0;
 }
