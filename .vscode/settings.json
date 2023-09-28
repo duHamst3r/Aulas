@@ -1,3 +1,5 @@
 {
-    "C_Cpp.default.compilerPath": "c:\\Users\\Krypton\\Documents\\Aulas\\Aulas\\calculadora.c"
+    "files.associations": {
+        "Exercicios.C": "cpp"
+    }
 }
