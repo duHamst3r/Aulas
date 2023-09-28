@@ -11,7 +11,7 @@ int main() {
 
     // Verifica se o ano está dentro do intervalo especificado
     if (ano >= 1800 && ano <= 2022) {
-        // Verifica se ocorreram Jogos Olímpicos de Verão (da Era Moderna)
+        // Verifica se ocorreram Jogos Olímpicos de Verão (Era Moderna)
         if (ano >= 1896 && (ano - 1896) % 4 == 0) {
             olimpiadas_verao = 1;
         }
