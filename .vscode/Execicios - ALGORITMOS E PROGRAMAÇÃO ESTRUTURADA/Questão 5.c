@@ -9,7 +9,7 @@ int main() {
     printf("Digite o valor de B: ");
     scanf("%d", &B);
 
-    // Verificação se os valores são iguais
+    // Verificar se os valores são iguais
     if (A == B) {
         printf("Os valores lidos são iguais.\n");
     } else {

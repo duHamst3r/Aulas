@@ -10,7 +10,7 @@ int main() {
     // Verifica se a senha cadastrada tem 4 dígitos
     if (senha_cadastrada < 1000 || senha_cadastrada > 9999) {
         printf("A senha cadastrada deve ter 4 dígitos.\n");
-        return 1; // Encerra o programa com código de erro
+        return 1;
     }
 
     printf("Senha cadastrada: %04d\n", senha_cadastrada);
@@ -23,7 +23,7 @@ int main() {
         // Verifica se a senha inserida é igual à senha cadastrada
         if (senha_inserida == senha_cadastrada) {
             printf("Senha válida!\n");
-            break; // Encerra o programa com sucesso
+            break;
         } else {
             printf("Senha inválida!\n");
         }
