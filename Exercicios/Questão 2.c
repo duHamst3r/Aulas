@@ -1,66 +1,61 @@
 #include <stdio.h>
-#include <string.h>
-
-typedef struct {
-    char nome[50];
-    char posicao;
-    int forca;
-} Jogador;
-
-void lerJogadores(Jogador time[], char nomeTime[]) {
-    printf("Digite o nome do time %s: ", nomeTime);
-    scanf("%s", nomeTime);
-    for (int i = 0; i < 11; i++) {
-        printf("Digite o nome do jogador, posição e força, separados por ponto e vírgula (Ex: Cristiano Ronaldo;A;95): ");
-        scanf("%s ;%c ;%d", time[i].nome, &time[i].posicao, &time[i].forca);
-    }
-}
-
-double calcularForcaPonderada(Jogador time[]) {
-    double forcaPonderada = 0;
-    for (int i = 0; i < 11; i++) {
-        switch (time[i].posicao) {
-            case 'G':
-                forcaPonderada += 8 * time[i].forca;
-                break;
-            case 'L':
-            case 'Z':
-                forcaPonderada += 10 * time[i].forca;
-                break;
-            case 'V':
-            case 'M':
-                forcaPonderada += 5 * time[i].forca;
-                break;
-            case 'A':
-                forcaPonderada += 12 * time[i].forca;
-                break;
-            default:
-                printf("Posição de jogador inválida.\n");
-        }
-    }
-    return forcaPonderada / 100;
-}
+#include <math.h>
+#include <stdlib.h>
 
 int main() {
-    Jogador time1[11], time2[11];
-    char nomeTime1[50], nomeTime2[50];
-    double forcaTime1, forcaTime2;
+    char nomeJogador1[11][30], nomeJogador2[11][30], nomeTime1[30], nomeTime2[30], posicao;
+    int nivelForca = 0;
+    double forcaTime1 = 0, forcaTime2 = 0;
 
-    lerJogadores(time1, nomeTime1);
-    lerJogadores(time2, nomeTime2);
+    printf("Digite Informacoes: ");
+    scanf("%[^\n]%*c", nomeTime1);
 
-    forcaTime1 = calcularForcaPonderada(time1);
-    forcaTime2 = calcularForcaPonderada(time2);
+    for (int i = 0; i < 11; i++) {
+        scanf(" %29[^;];%c;%d%*c", nomeJogador1[i], &posicao, &nivelForca);
+        if (posicao == 'G') {
+            forcaTime1 += 8 * nivelForca;
+        } else if (posicao == 'L') {
+            forcaTime1 += 10 * nivelForca;
+        } else if (posicao == 'Z') {
+            forcaTime1 += 5 * nivelForca;
+        } else if (posicao == 'V') {
+            forcaTime1 += 8 * nivelForca;
+        } else if (posicao == 'M') {
+            forcaTime1 += 11 * nivelForca;
+        } else if (posicao == 'A') {
+            forcaTime1 += 12 * nivelForca;
+        }
+    }
 
-    printf("Força ponderada do time %s: %.2lf\n", nomeTime1, forcaTime1);
-    printf("Força ponderada do time %s: %.2lf\n", nomeTime2, forcaTime2);
+    scanf("%[^\n]%*c", nomeTime2);
+
+    for (int i = 0; i < 11; i++) {
+        scanf(" %29[^;];%c;%d%*c", nomeJogador2[i], &posicao, &nivelForca);
+        if (posicao == 'G') {
+            forcaTime2 += 8 * nivelForca;
+        } else if (posicao == 'L') {
+            forcaTime2 += 10 * nivelForca;
+        } else if (posicao == 'Z') {
+            forcaTime2 += 5 * nivelForca;
+        } else if (posicao == 'V') {
+            forcaTime2 += 8 * nivelForca;
+        } else if (posicao == 'M') {
+            forcaTime2 += 11 * nivelForca;
+        } else if (posicao == 'A') {
+            forcaTime2 += 12 * nivelForca;
+        }
+    }
+
+    forcaTime1 = forcaTime1 / 100;
+    forcaTime2 = forcaTime2 / 100;
+
+    printf("%s: %.2f de forca\n", nomeTime1, forcaTime1);
+    printf("%s: %.2f de forca\n", nomeTime2, forcaTime2);
 
     if (forcaTime1 > forcaTime2) {
-        printf("O time %s é o mais forte.\n", nomeTime1);
-    } else if (forcaTime2 > forcaTime1) {
-        printf("O time %s é o mais forte.\n", nomeTime2);
-    } else {
-        printf("Os times têm força igual.\n");
+        printf("%s eh mais forte\n", nomeTime1);
+    } else if (forcaTime1 < forcaTime2) {
+        printf("%s eh mais forte\n", nomeTime2);
     }
 
     return 0;
